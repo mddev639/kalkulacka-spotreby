@@ -1,0 +1,284 @@
+/* Globálne nastavenia a fonty */
+body {
+    /* Font pre telo textu */
+    font-family: 'Source Sans 3', sans-serif; 
+    color: #333;
+    line-height: 1.6;
+    padding: 10px; 
+    margin: 0;
+    background-color: #f4f7f9;
+}
+
+/* Hlavný kontajner */
+.calculator-container {
+    max-width: 850px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 0; /* Ostré rohy */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Nadpisy */
+h1 {
+    color: #EC6C1E; /* Oranžová farba */
+    /* Font pre nadpisy */
+    font-family: 'Exo 2', sans-serif; 
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+h2 {
+    color: #333;
+    font-family: 'Exo 2', sans-serif; 
+    font-size: 1.5em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+
+.intro-text {
+    margin-bottom: 25px;
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* --- Rozloženie vstupných polí --- */
+.input-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    /* Príkon a Cena začínajú na polovičnej šírke na desktope/tablete */
+    flex: 1 1 calc(50% - 10px); 
+}
+
+.input-block:nth-child(3) {
+    /* Časový blok vždy na celú šírku */
+    flex: 1 1 100%;
+    padding-top: 10px;
+}
+
+.input-block label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 1.1em;
+}
+
+/* Skupina vstupov na jednom riadku (flexibilné usporiadanie) */
+.input-row-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Vstupné polia a selecty - Zjednotený, moderný vzhľad */
+input[type="number"], 
+select {
+    padding: 10px 12px;
+    border: 1px solid #c9d0d6;
+    border-radius: 0; /* Ostré rohy */
+    font-size: 1em;
+    height: 40px; 
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="number"]:focus,
+select:focus {
+    border-color: #EC6C1E; /* Oranžový focus */
+    outline: none;
+    box-shadow: 0 0 0 1px #EC6C1E; /* Oranžový shadow */
+}
+
+/* Šírky pre Príkon a Cenu (zdieľajú polovicu bloku) */
+.input-half {
+    flex: 1 1 48%; 
+}
+
+/* --- Sekcia Čas/Minúty/Frekvencia --- */
+#hodiny, #minuty {
+    width: 80px;
+    text-align: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.unit-label {
+    white-space: nowrap;
+    color: #666;
+    font-size: 0.95em;
+    padding: 0; 
+    margin: 0 5px 0 0;
+    flex-shrink: 0;
+}
+
+#frekvencia {
+    flex: 1 1 120px;
+    min-width: 120px;
+}
+
+/* --- Tlačidlá (Ak by ste ich v budúcnosti chceli pridať späť) --- */
+.button-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* --- Odhadované náklady (Sumárna sekcia) --- */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 30px 0;
+}
+
+.summary-results {
+    background-color: #fef8f4; /* Jemné oranžové pozadie */
+    border: 1px solid #f6d1bc; 
+    padding: 20px;
+    border-radius: 0; /* Ostré rohy */
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+.summary-results p {
+    margin: 0;
+    font-size: 1.15em;
+    color: #333; 
+}
+.summary-results strong {
+    font-weight: 700;
+    color: #EC6C1E; /* Oranžový výsledok */
+}
+
+/* --- Tabuľka výsledkov --- */
+#resultsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#resultsTable th, 
+#resultsTable td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+#resultsTable th:first-child {
+    text-align: left;
+}
+
+#resultsTable th {
+    background-color: #f8f9fa;
+    color: #555;
+    text-align: center;
+    font-weight: 600;
+}
+#resultsTable td:first-child {
+    text-align: center;
+}
+#resultsTable tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.period-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; 
+}
+
+.period-cell .period-input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 0; /* Ostré rohy */
+    width: 50px !important; 
+    text-align: center;
+    height: 30px;
+    font-size: 0.9em;
+}
+
+/* *************************************************************** */
+/* MEDIA QUERIES PRE TABLETY A MOBILY (RESPONZIVITA) */
+/* *************************************************************** */
+
+/* 1. Prechod pre menšie tablety/veľké mobily (Max šírka 768px) */
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: 20px;
+    }
+    
+    /* Všetky hlavné bloky (Príkon, Cena, Čas) idú na plnú šírku */
+    .input-block {
+        flex: 1 1 100%;
+    }
+    
+    /* Inputy (napr. 100 W) si vnútri bloku udržia polovičnú šírku */
+    .input-half {
+        flex: 1 1 50%; 
+    }
+    
+    /* Sumárne výsledky idú pod seba */
+    .summary-results {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    /* ÚPRAVA ČASOVÉHO BLOKU pre lepšiu čitateľnosť */
+    .input-block:nth-child(3) .input-row-group {
+        display: flex;
+        flex-wrap: wrap; 
+        gap: 8px; 
+    }
+    
+    /* Pevnejšie šírky pre hodiny/minúty a ich labely */
+    #hodiny, #minuty {
+        flex: 0 0 20%; 
+        min-width: 50px; 
+    }
+    .unit-label {
+        flex: 0 0 auto;
+        margin-right: 2px;
+    }
+
+    /* Frekvencia sa zalamuje pod čas a zaberá celú šírku riadku */
+    #frekvencia {
+        flex: 1 1 100%; 
+        min-width: 100%;
+        order: 10; 
+        margin-top: 10px;
+    }
+}
+
+/* 2. Optimalizácia pre najmenšie mobily (Max šírka 480px) */
+@media (max-width: 480px) {
+    .calculator-container {
+        padding: 15px;
+    }
+    
+    /* Zabezpečíme, že selecty v bloku Príkon/Cena idú na plnú šírku */
+    .input-row-group {
+        flex-wrap: wrap;
+    }
+    .input-half {
+        flex: 1 1 100%;
+    }
+
+    /* Časový blok už nepotrebuje ďalšie úpravy, lebo flex-wrap ho podrží */
+}
+
+/* Fix pre Safari/iOS, aby inputy mali správnu výšku aj na mobiloch */
+input[type="number"], 
+select {
+    -webkit-appearance: none;
+}

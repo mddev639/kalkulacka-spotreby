@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulačka Spotreby Elektriny</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+<div class="calculator-container">
+    <h1>Kalkulačka spotreby elektriny</h1>
+    <p class="intro-text">Kalkulačka vypočíta spotrebu a cenu prevádzky elektrospotrebičov.</p>
+
+    <div class="input-grid"> 
+
+        <div class="input-block">
+            <label for="prikon">Zadajte príkon spotrebiča</label>
+            <div class="input-row-group">
+                <input type="number" id="prikon" value="100" min="0" class="input-half"> 
+                <select id="prikon-jednotka" class="input-half">
+                    <option value="W">W</option>
+                    <option value="kW">kW</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input-block">
+            <label for="cena">Zadajte cenu za energiu</label>
+            <div class="input-row-group">
+                <input type="number" id="cena" value="0.13" min="0" step="0.01" class="input-half"> 
+                <select id="cena-jednotka" class="input-half">
+                    <option value="kWh">€/kWh</option>
+                    <option value="MWh">€/MWh</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input-block">
+            <label>Koľko hodín denne alebo týždenne je spotrebič zapnutý?</label>
+            <div class="input-row-group time-input-group">
+                <input type="number" id="hodiny" value="1" min="0" max="24" class="input-quarter" style="width: 100px;"> 
+                <span class="unit-label input-label-narrow">hodín</span>
+                
+                <input type="number" id="minuty" value="10" min="0" max="59" class="input-quarter" style="width: 100px;"> 
+                <span class="unit-label input-label-narrow">minút</span>
+                
+                <select id="frekvencia" class="input-third"> 
+                    <option value="denne">denne</option>
+                    <option value="tyzdenne">týždenne</option>
+                    <option value="mesacne">mesačne</option>
+                </select>
+            </div>
+        </div>
+    </div> 
+    <hr>
+    <h2>Odhadované náklady za rok/mesiac</h2>
+    <p>Na základe vášho nastavenia spotrebiča (<span id="prikon-display">100 W</span> zapnutý <span id="hodiny-frekvencia-display">1 hodín a 10 minút denne</span>), sú odhadované náklady:</p>
+    <div class="summary-results">
+        <p>Mesačne: <strong id="mesacny-odhad">0.00 €/mesiac</strong></p>
+        <p>Ročne: <strong id="rocny-odhad">0.00 €/rok</strong></p>
+    </div>
+    <hr>
+    <div class="results-container">
+        <h2>Detailná spotreba a cena elektrickej energie</h2>
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th>Obdobie</th>
+                    <th>Spotreba (kWh)</th>
+                    <th>Cena (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr data-period="hodina">
+                    <td class="period-cell">
+                        <input type="number" value="1" min="1" class="period-input" data-unit="hodina" style="width: 50px;">
+                        <span class="period-unit">hodina</span>
+                    </td>
+                    <td class="kwh-output">0.000</td>
+                    <td class="price-output">0.00 €</td>
+                </tr>
+
+                <tr data-period="den">
+                    <td class="period-cell">
+                        <input type="number" value="1" min="1" class="period-input" data-unit="den" style="width: 50px;">
+                        <span class="period-unit">deň</span>
+                    </td>
+                    <td class="kwh-output">0.000</td>
+                    <td class="price-output">0.00 €</td>
+                </tr>
+                
+                <tr data-period="mesiac">
+                    <td class="period-cell">
+                        <input type="number" value="1" min="1" class="period-input" data-unit="mesiac" style="width: 50px;">
+                        <span class="period-unit">mesiac</span>
+                    </td>
+                    <td class="kwh-output">0.000</td>
+                    <td class="price-output">0.00 €</td>
+                </tr>
+                
+                <tr data-period="rok">
+                    <td class="period-cell">
+                        <input type="number" value="1" min="1" class="period-input" data-unit="rok" style="width: 50px;">
+                        <span class="period-unit">rok</span>
+                    </td>
+                    <td class="kwh-output">0.000</td>
+                    <td class="price-output">0.00 €</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
